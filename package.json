@@ -1,0 +1,35 @@
+{
+  "name": "dropbox-markdown-ssg",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "license": "MIT",
+  "homepage": "https://github.com/phortuin/dropbox-markdown-ssg",
+  "author": {
+    "name": "Anne Fortuin",
+    "url": "phortuin.nl"
+  },
+  "repository": "phortuin/dropbox-markdown-ssg",
+  "main": "index.js",
+  "engines": {
+    "node": ">=6"
+  },
+  "scripts": {
+    "test": "tape test.js | faucet"
+  },
+  "devDependencies": {
+    "faucet": "0.0.1",
+    "tape": "4.11.0"
+  },
+  "dependencies": {
+    "bluebird": "3.5.5",
+    "dropbox": "4.0.30",
+    "markdown-description": "1.1.0",
+    "markdown-title": "1.0.2",
+    "marked": "0.7.0",
+    "mkdirp": "0.5.1",
+    "node-fetch": "2.6.0",
+    "nunjucks": "3.2.0",
+    "prismjs": "1.17.1"
+  }
+}
