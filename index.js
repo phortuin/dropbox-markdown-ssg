@@ -10,7 +10,7 @@ const DEFAULTS = {
 const INVALID_OR_MISSING_TOKEN = 'Dropbox token seems missing or invalid'
 
 function validToken(token) {
-	return /[a-zA-Z0-9_-]{64}/.test(token)
+	return /^[a-zA-Z0-9_-]{64}$/.test(token)
 }
 
 const create = () => {
