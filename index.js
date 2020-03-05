@@ -1,5 +1,5 @@
 const getDropboxFiles = require('./lib/dropbox-get-files')
-const dropboxFileToHTML = require('./lib/dropbox-file-to-html')
+const processDropboxFile = require('./lib/dropbox-process-file')
 const writeToTarget = require('./lib/file-write-to-target')
 
 const DEFAULTS = {
@@ -27,7 +27,7 @@ const create = () => {
 
 	function startTheThing(token, options) {
 		return getDropboxFiles(token)
-			.map(dropboxFileToHTML(options.template))
+			.map(processDropboxFile(options.template))
 			.map(writeToTarget(options.target))
 	}
 
