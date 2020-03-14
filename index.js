@@ -1,5 +1,6 @@
 const getDropboxFiles = require('./lib/dropbox-get-files')
 const processDropboxFile = require('./lib/dropbox-process-file')
+const markdownToHTML = require('./lib/markdown-to-html')
 const writeToTarget = require('./lib/file-write-to-target')
 
 const DEFAULTS = {
@@ -29,6 +30,7 @@ const create = () => {
 	function startTheThing(token, options) {
 		return getDropboxFiles(token)
 			.map(processDropboxFile(options.binariesTarget))
+			.map(markdownToHTML(options.template, options.binariesTarget)) // moet pas als alle dropbox files klaar zijn zodat alle content in contentstore zit
 			.map(writeToTarget(options.target))
 	}
 

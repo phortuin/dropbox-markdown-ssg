@@ -26,6 +26,7 @@
   "dependencies": {
     "bluebird": "3.5.5",
     "dropbox": "4.0.30",
+    "markdown-content-blocks": "^1.2.1",
     "markdown-description": "1.1.0",
     "markdown-title": "1.0.2",
     "marked": "0.7.0",
