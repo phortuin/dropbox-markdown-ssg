@@ -5,6 +5,7 @@ const writeToTarget = require('./lib/file-write-to-target')
 const DEFAULTS = {
 	template: 'index.njk',
 	target: 'build',
+	binariesTarget: 'media',
 }
 
 const INVALID_OR_MISSING_TOKEN = 'Dropbox token seems missing or invalid'
@@ -27,7 +28,7 @@ const create = () => {
 
 	function startTheThing(token, options) {
 		return getDropboxFiles(token)
-			.map(processDropboxFile(options.template))
+			.map(processDropboxFile(options.binariesTarget))
 			.map(writeToTarget(options.target))
 	}
 
