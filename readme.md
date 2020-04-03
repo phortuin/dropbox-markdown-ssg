@@ -10,4 +10,4 @@ Returns array of written paths
 
 ### options
 
-template, target, binariesTarget
+template, buildFolder, assetsFolder
