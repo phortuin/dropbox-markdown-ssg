@@ -1,6 +1,6 @@
 const test = require('tape')
-const proxyquire = require('proxyquire')
 const sinon = require('sinon')
+const { DropboxFile } = require('./lib/dropbox-file')
 
 const fileName = 'My Amazing File.md'
 const filePath = `/${fileName}`
@@ -43,12 +43,17 @@ const dropboxFileFromFilesDownload = {
 	fileBinary: Buffer.from(fileContents)
 }
 
-test('Dropbox file to HTML returns slugified filename', t => {
-	const dropboxFileToHTML = proxyquire('./lib/dropbox-file-to-html', {
-		'./markdown-to-html': () => fileHTML
-	})
-	let result = dropboxFileToHTML(template)(dropboxFileFromFilesDownload)
-	t.plan(1)
-	t.equal(result.slug, 'my-amazing-file')
-})
+const options = {
+	template,
+	buildFolder: 'build',
+	assetsFolder: 'assets',
+}
 
+test('Dropbox file has slug and html', t => {
+	let file = new DropboxFile(dropboxFileFromFilesDownload, options)
+	sinon.stub(file, '_getHTML').returns(fileHTML)
+	let fileProps = file.toProps()
+	t.plan(2)
+	t.equal(fileProps.slug, 'my-amazing-file')
+	t.equal(file.getContent(), fileHTML) // pretty useless test, tho
+})
